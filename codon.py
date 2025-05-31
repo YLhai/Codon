@@ -8,7 +8,7 @@ from codon1.ENc import ENc
 from codon1.Neutrality import neutrality
 from codon1.Optimalcodon import optimalcodon
 from codon1.Similar import similarcodon
-
+from codon1.RSCU import rscu
 
 def help(type):
     if type == 1:
@@ -20,6 +20,7 @@ def help(type):
             "neutrality": "***",
             "correlation": "***",
             "similar": "***",
+            "rscu": "***",
 
         }
         print("Usage: \t python codon.py <command> <arguments>\n"
@@ -46,6 +47,7 @@ def main():
         "neutrality":"***",
         "correlation": "***",
         "similar": "***",
+        "rscu": "***",
 
     }
 
@@ -134,6 +136,17 @@ def main():
                   )
 
         similarcodon.run(sys.argv[2], sys.argv[3], outpath)
+
+    elif modulename == "rscu":
+        if len(sys.argv) != 4:
+            print("Usage: python codon.py rscu <cds.fasta> <figName>\n\n"
+                  "cds.fasta\t the fasta file of codons.\n"
+                  "figName\t the name of the output figure.\n"
+                  )
+            sys.exit(0)
+        figPath = outpath + sys.argv[3]
+        rscu.run(sys.argv[2], figPath, outpath)
+
 
 
 if __name__ == "__main__":
