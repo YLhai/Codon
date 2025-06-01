@@ -15,7 +15,7 @@ pip install -r request.txt
 
 version 3.11
 
-### modoule
+### Modules
 
 ```commandline
 bio==1.8.0
