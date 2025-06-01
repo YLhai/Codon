@@ -1,13 +1,15 @@
+#!/usr/bin/env python3
+
 import os
 import sys
-from codon1.Bias import bias
-from codon1.Correlation import correlation
-from codon1.Correspondence import COA
-from codon1.ENc import ENc
-from codon1.Neutrality import neutrality
-from codon1.Optimalcodon import optimalcodon
-from codon1.Similar import similarcodon
-from codon1.RSCU import rscu
+from codonUsageBias.Bias import bias
+from codonUsageBias.Correlation import correlation
+from codonUsageBias.Correspondence import COA
+from codonUsageBias.ENc import ENc
+from codonUsageBias.Neutrality import neutrality
+from codonUsageBias.Optimalcodon import optimalcodon
+from codonUsageBias.Similar import similarcodon
+from codonUsageBias.RSCU import rscu
 
 def help(type):
     if type == 1:
@@ -22,9 +24,9 @@ def help(type):
             "rscu": "***",
 
         }
-        print("Usage: \t python codon.py <command> <arguments>\n"
+        print("Usage: \t python CUB.py <command> <arguments>\n"
               "version: \t 1.1\n\n"
-              "Description: Codon is a anilize tool of codon bias.\n\n"
+              "Description: CUB is a plot analysis tool of codon usage bias.\n\n"
               "Commands:"
               )
         for key, value in Commands.items():
@@ -65,7 +67,7 @@ def main():
 
     elif modulename == "bias":
         if len(sys.argv) != 4:
-            print("Usage: python codon.py bias <cds.fasta> <figName>\n\n"
+            print("Usage: python CUB.py bias <cds.fasta> <figName>\n\n"
                   "cds.fasta\t the fasta file of codons.\n"
                   "figName\t the name of the output figure.\n"
                   )
@@ -75,7 +77,7 @@ def main():
 
     elif modulename == "coa":
         if len(sys.argv) != 4:
-            print("Usage: python codon.py coa <cds.fasta> <figName>\n\n"
+            print("Usage: python CUB.py coa <cds.fasta> <figName>\n\n"
                   "cds.fasta\t the fasta file of codons.\n"
                   "figName\t the name of the output figure.\n"
                   )
@@ -85,7 +87,7 @@ def main():
 
     elif modulename == "enc":
         if len(sys.argv) != 4:
-            print("Usage: python codon.py enc <codonW.out> <figName>\n\n"
+            print("Usage: python CUB.py enc <codonW.out> <figName>\n\n"
                   "codonW.out\t the outputfile of codonW using the codon.fasta.\n"
                   "figName\t the name of the output figure.\n"
                   )
@@ -95,7 +97,7 @@ def main():
 
     elif modulename == "correlation":
         if len(sys.argv) != 5:
-            print("Usage: python codon.py correlation <cds.fasta> <codonW.out> <figName>\n\n"
+            print("Usage: python CUB.py correlation <cds.fasta> <codonW.out> <figName>\n\n"
                   "cds.fasta\t the fasta file of codons.\n"
                   "codonW.out\t the outputfile of codonW using the codon.fasta.\n"
                   "figName\t the name of the output figure.\n"
@@ -106,7 +108,7 @@ def main():
 
     elif modulename == "neutrality":
         if len(sys.argv) != 4:
-            print("Usage: python codon.py neutrality <cds.fasta> <figName>\n\n"
+            print("Usage: python CUB.py neutrality <cds.fasta> <figName>\n\n"
                   "cds.fasta\t the fasta file of codons.\n"
                   "figName\t the name of the output figure.\n"
                   )
@@ -116,7 +118,7 @@ def main():
 
     elif modulename == "optimal":
         if len(sys.argv) != 5:
-            print("Usage: python codon.py optimal <cds.fasta> <codonW.out> <figName>\n\n"
+            print("Usage: python CUB.py optimal <cds.fasta> <codonW.out> <figName>\n\n"
                   "cds.fasta\t the fasta file of codons.\n"
                   "codonW.out\t the outputfile of codonW using the codon.fasta.\n"
                   "figName\t the name of the output figure.\n"
@@ -127,7 +129,7 @@ def main():
 
     elif modulename == "similar":
         if len(sys.argv) != 4:
-            print("Usage: python codon.py bias <cdsA.fasta> <cdsB.fasta>>\n\n"
+            print("Usage: python CUB.py bias <cdsA.fasta> <cdsB.fasta>\n\n"
                   "cdsA.fasta\t the fasta file of codons of speciesA\n"
                   "cdsB.fasta\t the fasta file of codons of speciesB\n"
                   )
@@ -136,14 +138,13 @@ def main():
 
     elif modulename == "rscu":
         if len(sys.argv) != 4:
-            print("Usage: python codon.py rscu <cds.fasta> <figName>\n\n"
+            print("Usage: python CUB.py rscu <cds.fasta> <figName>\n\n"
                   "cds.fasta\t the fasta file of codons.\n"
                   "figName\t the name of the output figure.\n"
                   )
             sys.exit(0)
         figPath = outpath + sys.argv[3]
         rscu.run(sys.argv[2], figPath, outpath)
-
 
 
 if __name__ == "__main__":
