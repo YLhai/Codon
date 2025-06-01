@@ -69,7 +69,7 @@ python CUB.py correlation <yourCDS.fasta> <codonW.out> <figName>
 
 ```bash
 
-python CUB correneutrality <cds.fasta> <figName>
+python CUB.py correneutrality <cds.fasta> <figName>
 
 ```
 ### optimal
@@ -83,7 +83,7 @@ python CUB.py optimal <cds.fasta> <codonW.out> <figName>
 
 ```bash
 
-python CUB bias <cdsA.fasta> <cdsB.fasta>
+python CUB.py bias <cdsA.fasta> <cdsB.fasta>
 
 ```
 ### rscu
