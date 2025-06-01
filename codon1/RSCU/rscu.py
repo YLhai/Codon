@@ -14,8 +14,6 @@ def rscu(rscu,figname):
 
     # 读取数据
     rscu_data = pd.read_csv(rscu,sep='\t')
-    # codon_data = pd.read_csv(colorSet)
-    # 硬编码颜色数据
     codon_data = pd.DataFrame([
     # 完整颜色编码数据
     {'Codon': 'TTT', 'AA': 'Phe', 'color': 6},
@@ -100,11 +98,9 @@ def rscu(rscu,figname):
     # --------------------------
     ax1 = fig.add_subplot(gs[0])
 
-    # 按氨基酸分组（处理分类数据）
     groups = combined.groupby('AA', observed=True)
     aa_categories = combined['AA'].cat.categories  # 获取分类顺序
 
-    # 初始化底部位置（使用浮点类型）
     bottom = pd.Series(0.0, index=aa_categories)
 
     # 颜色映射
@@ -117,29 +113,16 @@ def rscu(rscu,figname):
         '3.5': '#efafb4'
     }
     colors = {str(c): color_palette.get(str(c), '#999999') for c in combined['color'].unique()}
-
-    # # 绘制堆叠条形（使用数值索引）
-    # for idx, aa in enumerate(aa_categories):
-    #     group = groups.get_group(aa)
-    #     color_groups = group.groupby('color', observed=True)
-    #     for color, sub_group in color_groups:
-    #         ax1.bar(idx, sub_group['RSCU'].sum(),
-    #                 bottom=bottom[aa],
-    #                 color=colors[str(color)],
-    #                 width=0.8)
-    #         bottom[aa] += sub_group['RSCU'].sum()
-    # 绘制堆叠条形（使用数值索引）
+    # 条形块
     for idx, aa in enumerate(aa_categories):
         group = groups.get_group(aa)
 
-        # 按color数值降序排列（新添加的排序逻辑）
         sorted_colors = sorted(
             group['color'].unique(),
             key=lambda x: float(x),
             reverse=True
         )
 
-        # 按排序后的颜色顺序绘制
         for color in sorted_colors:
             sub_group = group[group['color'] == color]
             ax1.bar(idx, sub_group['RSCU'].sum(),
@@ -155,41 +138,18 @@ def rscu(rscu,figname):
     ax1.set_ylabel('RSCU')
     ax1.set_ylim(0, 6.2)
 
-    # --------------------------
-    # 标签图
-    # --------------------------
-    # ax2 = fig.add_subplot(gs[1], sharex=ax1)
-    #
-    # # 创建标签位置（使用相同数值索引）
-    # for idx, aa in enumerate(aa_categories):
-    #     group = groups.get_group(aa)
-    #     y_pos = 0.5
-    #     for _, row in group.iterrows():
-    #         ax2.text(idx, y_pos, row['Codon'],
-    #                  ha='center', va='center',
-    #                  fontsize=8,
-    #                  bbox=dict(facecolor=colors[str(row['color'])],
-    #                            edgecolor='none',
-    #                            boxstyle='round,pad=0.2'))
-    #         y_pos -= 0.2  # 调整标签垂直间距
-    #
-    # ax2.set_ylim(-1, 1)
-    # ax2.axis('off')
-    # 标签图
     ax2 = fig.add_subplot(gs[1], sharex=ax1)
 
-    # 创建标签位置（与堆叠顺序一致）
     for idx, aa in enumerate(aa_categories):
         group = groups.get_group(aa)
 
-        # 使用相同的颜色排序逻辑
         sorted_colors = sorted(
             group['color'].unique(),
             key=lambda x: float(x),
-            reverse=True  # 保持与堆叠顺序一致
+            reverse=True
         )
 
-        y_pos = 0.8  # 起始位置调高
+        y_pos = 0.8
         for color in sorted_colors:
             sub_group = group[group['color'] == color]
             for _, row in sub_group.iterrows():
@@ -203,15 +163,9 @@ def rscu(rscu,figname):
                         boxstyle='round,pad=0.2'
                     )
                 )
-                y_pos -= 0.25  # 向下排列
+                y_pos -= 0.25
 
     ax2.set_ylim(-0.5, 1.2)
     ax2.axis('off')
-
-    # 保存图形
-    plt.tight_layout()
-    plt.savefig(figname, bbox_inches='tight')
-
-if __name__ == '__main__':
-    # run("Psal.cds","aaa")
-    rscu("Psal.RSCU.csv",'RSCU.pdf')
+    # 保存图像
+    plt.savefig(figname, bbox_inches='tight', pad_inches=0.2)

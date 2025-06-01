@@ -119,23 +119,3 @@ def globBiasStat(input_cds, outStat):
     except Exception as e:
         print(f"Error: {str(e)}")
         sys.exit(1)
-
-if __name__ == "__main__":
-    # if len(sys.argv) != 3:
-    #     print(f"Usage: {sys.argv[0]} <input.fasta> <output.txt>")
-    #     sys.exit(1)
-    #
-    # input_file = sys.argv[1]
-    # output_file = sys.argv[2]
-
-    input_file = '../RSCU/cds.fasta'
-    output_file = "ATCG3"
-
-    try:
-        stats = analyze_codons(input_file)
-        average = calculate_averages(stats)
-        write_results(stats, average, output_file)
-        print(f"Analysis completed. Results saved to {output_file}")
-    except Exception as e:
-        print(f"Error: {str(e)}")
-        sys.exit(1)

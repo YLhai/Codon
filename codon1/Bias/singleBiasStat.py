@@ -1,5 +1,3 @@
-import sys
-
 from Bio import SeqIO
 from collections import defaultdict
 import csv
@@ -72,13 +70,3 @@ def singleBiasStat(input_cds,outstat):
         writer = csv.DictWriter(f, fieldnames=["GeneID", "Total_Codons", "A%", "T%", "G%", "C%"])
         writer.writeheader()
         writer.writerows(results)
-
-
-if __name__ == "__main__":
-    if len(sys.argv) != 3:
-        print("<UNK>")
-        sys.exit(1)
-    input_4ATCG = sys.argv[1]
-    outstat = sys.argv[2]
-    globBiasStat(input_4ATCG, outstat)
-    print(f"分析完成，结果已保存至 {outstat}")

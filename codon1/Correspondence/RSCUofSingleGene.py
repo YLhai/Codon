@@ -1,6 +1,4 @@
 import csv
-from collections import defaultdict
-
 
 def parse_fasta(file_path):
     """解析FASTA文件，返回基因ID与序列的字典"""
@@ -110,10 +108,3 @@ def process_cds_file(input_file, output_file):
             for codon in header[1:]:
                 row.append(f"{rscu.get(codon, 0):.4f}")  # 无数据则填0
             writer.writerow(row)
-
-
-if __name__ == "__main__":
-    input_path = r"../data/cds.fasta"  # 输入文件路径
-    output_path = r"cas.rscu.csv"  # 输出文件路径
-    process_cds_file(input_path, output_path)
-    print(f"分析完成！结果已保存至：{output_path}")

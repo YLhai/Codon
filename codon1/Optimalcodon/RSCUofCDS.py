@@ -1,6 +1,5 @@
 import pandas as pd
 from collections import defaultdict
-import os
 
 
 def calculate_overall_rscu(fasta_path):
@@ -76,18 +75,3 @@ def run(fasta_file,RSCU_file):
     df.sort_index(inplace=True)
     df.index.name = 'Codon'
     df.to_csv(RSCU_file,sep='\t')
-
-# 使用示例
-if __name__ == "__main__":
-    # 输入FASTA文件路径
-    fasta_file = "Psal.cds.fasta"
-    RSCU_file = "Psal.RSCU.csv"
-
-    # 计算结果
-    rscu_values = calculate_overall_rscu(fasta_file)
-    # 转换为DataFrame输出
-    df = pd.DataFrame.from_dict(rscu_values, orient='index', columns=['RSCU'])
-    df.sort_index(inplace=True)
-    df.index.name = 'Codon'
-
-    df.to_csv(RSCU_file)

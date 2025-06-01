@@ -1,6 +1,5 @@
 import pandas as pd
 from collections import defaultdict
-import os
 
 
 def calculate_overall_rscu(fasta_path):
@@ -56,7 +55,6 @@ def calculate_overall_rscu(fasta_path):
             continue
         expected = total / len(family)
         rscu[codon] = round(count / expected, 4) if expected != 0 else 0
-
     return rscu
 
 
@@ -79,33 +77,8 @@ def fix_csv_header(input_file, output_file):
     # 读取原始文件（自动检测分隔符）
     df = pd.read_csv(input_file)
 
-    # 验证数据格式
-    # if df.columns.tolist() != [',RSCU']:
-    #     raise ValueError("文件格式不符合预期，请检查列名格式")
-
     # 重置列名
     df.columns = ['Codon', 'RSCU']
 
     # 保存修正后的文件
     df.to_csv(output_file, index=False)
-    print(f"文件已修正并保存至：{output_file}")
-
-
-# 使用示例
-if __name__ == "__main__":
-    # 输入FASTA文件路径
-    fasta_file = "Psal.cds"
-    RSCU_file = "Psal.RSCU.csv"
-
-    # 计算结果
-    rscu_values = calculate_overall_rscu(fasta_file)
-
-    # 转换为DataFrame输出
-    df = pd.DataFrame.from_dict(rscu_values, orient='index', columns=['RSCU'])
-    df.sort_index(inplace=True)
-
-    print("包含终止密码子的RSCU值：")
-    print(df)
-    df.to_csv("tmp.csv")
-    fix_csv_header("tmp.csv", RSCU_file)
-    os.remove("tmp.csv")

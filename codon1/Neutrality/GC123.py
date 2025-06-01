@@ -1,4 +1,3 @@
-import sys
 from Bio import SeqIO
 from Bio.SeqUtils import Seq
 
@@ -44,13 +43,3 @@ def GC123(in_fasta,out_results):
         fw.write("%s\t%s\t%s\t%s\t%s\n" % (rec.id, str(GC_first), str(GC_second), str(GC_third), str(GC_total)))
 
     fw.close()
-
-    print("Well done!")
-
-if __name__ == '__main__':
-    # if len(sys.argv) != 3:
-    #     print("Usage: python GC123.py <in_fasta> <out_results>")
-    in_fasta = "Psal.cds.fasta"
-    out_results = "Psal.GC123.stat"
-
-    GC123(in_fasta, out_results)

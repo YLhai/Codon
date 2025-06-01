@@ -1,6 +1,5 @@
 import os
 import sys
-
 from codon1.Bias import bias
 from codon1.Correlation import correlation
 from codon1.Correspondence import COA
@@ -33,8 +32,6 @@ def help(type):
         print(
             "\nWriten by hai and peng in 2025."
         )
-
-
 
 
 def main():

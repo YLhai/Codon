@@ -1,5 +1,3 @@
-import sys
-
 import pandas as pd
 import matplotlib.pyplot as plt
 from .ENcMaxMin import optimalstat
@@ -70,17 +68,5 @@ def optimalCodonPlot(optimalCodonStat,figname):
 def run(cds,codonWout,figname,outpath,figType="pdf"):
     inputfile = outpath+"optimalCodon.csv"
     figname = figname + "." + figType
-    optimalstat(cds,codonWout,inputfile)
-    optimalCodonPlot(inputfile, figname)
-
-
-if __name__ == '__main__':
-    if len(sys.argv) != 4:
-        print('Usage: python Optimalcodon.py <CDS_fasta_file> <codonWout> <fig_name>')
-        sys.exit(1)
-    cds = sys.argv[1]
-    codonWout = sys.argv[2]
-    inputfile = "optimalCodon.csv"
-    figname = sys.argv[3]
     optimalstat(cds,codonWout,inputfile)
     optimalCodonPlot(inputfile, figname)

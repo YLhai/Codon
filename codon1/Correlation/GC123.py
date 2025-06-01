@@ -1,15 +1,7 @@
-import sys
 import pandas as pd
 from Bio import SeqIO
 from Bio.SeqUtils import Seq
 
-#
-# if len(sys.argv) != 3:
-#     print("Usage: python GC123.py <input.fasta> <output.txt>")
-#     sys.exit(1)
-#
-# in_fasta = sys.argv[1]
-# out_results = sys.argv[2]
 
 def calculate_gc(seq):
     """手动计算GC含量百分比"""
@@ -67,10 +59,3 @@ def correlationStat(in_fasta,out_results,codonWout):
     del merged_df['title']
 
     merged_df.to_csv(out_results, sep='\t', index=False)
-
-
-if __name__ == '__main__':
-    infasta = "Psal.cds.fasta"
-    out_results = "correlationstat.csv"
-    codonWout = "Psal.out"
-    correlationStat(infasta,out_results,codonWout)

@@ -1,5 +1,3 @@
-import sys
-
 import pandas as pd
 import matplotlib.pyplot as plt
 import prince
@@ -9,7 +7,6 @@ def load_rscu_data(csv_path):
     df = pd.read_csv(csv_path, index_col=0)
     df = df.loc[:, (df != 0).any(axis=0)]
     return df
-
 
 def perform_ca(df, n_components=59):
     ca = prince.CA(n_components=n_components, engine='sklearn')
@@ -41,10 +38,6 @@ def plot_simple_ca(ca, df, output_path):
     ax.spines['left'].set_color('black')
     ax.spines['bottom'].set_linewidth(1.2)
     ax.spines['left'].set_linewidth(1.2)
-
-    # 移除上右边框
-    # ax.spines['top'].set_visible(False)
-    # ax.spines['right'].set_visible(False)
 
     # 设置坐标轴标签
     exp_var = ca.explained_inertia_
@@ -78,29 +71,6 @@ def run(input_cds,figname,output_path,figType="pdf"):
     ca_model = perform_ca(rscu_df)
     # 生成可视化
     figname = figname + "." + figType
-    plot_simple_ca(ca_model, rscu_df, figname)
-
-    # 打印解释比例
-    print_explained_variance(ca_model)
-    print(f"\n可视化结果已保存至：{figname}")
-
-
-if __name__ == "__main__":
-    # 参数设置
-
-
-
-    input_cds = sys.argv[1]  # 输入文件路径
-    figname = sys.argv[2]
-    output_csv = "cas.rscu.csv"
-    process_cds_file(input_cds, output_csv)
-
-    input_csv = output_csv
-    # 执行分析
-    rscu_df = load_rscu_data(input_csv)
-    ca_model = perform_ca(rscu_df)
-
-    # 生成可视化
     plot_simple_ca(ca_model, rscu_df, figname)
 
     # 打印解释比例

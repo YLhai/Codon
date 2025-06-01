@@ -1,8 +1,5 @@
-import sys
-
 import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np
 from scipy import stats
 from .GC123 import GC123
 
@@ -46,16 +43,3 @@ def run(cds_input,figname,outputPath,figType = "pdf"):
     inputstat = out_results
     figname = figname + "." + figType
     neutrality_plot(inputstat, figname)
-
-if __name__ == '__main__':
-    if len(sys.argv) != 3:
-        print("Usage: python neutrality.py <CDS.fasta> <figname>")
-        sys.exit(1)
-
-    cds_input = sys.argv[1]
-    out_results = "GC123.stat"
-    GC123(cds_input,out_results)
-
-    inputstat = out_results
-    figname = sys.argv[2]
-    neutrality_plot(inputstat,figname)

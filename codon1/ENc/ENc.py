@@ -1,5 +1,3 @@
-import sys
-
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
@@ -55,8 +53,3 @@ def enc_GC3s(codonWout,figname,figType = "pdf"):
 def run(codonWout,figname,figType = "pdf"):
     figname = figname + "." + figType
     enc_GC3s(codonWout,figname,figType)
-if __name__ == '__main__':
-    if len(sys.argv) != 3:
-        print("Usage: python ENcGC3s.py codonWout figname")
-        sys.exit(1)
-    enc_GC3s(sys.argv[1],sys.argv[2])

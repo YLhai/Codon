@@ -3,7 +3,6 @@ import numpy as np
 from ..Optimalcodon import RSCUofCDS
 
 
-
 def filter_RSCU(RSCUfile):
     # 定义需要排除的密码子列表
     excluded_codons = ['ATG', 'TGG', 'TAA', 'TAG', 'TGA']

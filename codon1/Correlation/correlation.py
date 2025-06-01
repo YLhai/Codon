@@ -83,13 +83,3 @@ def run(infasta,codonWout,figName,outputPath,figType = "pdf"):
 
     figname = figName + "." + figType
     correlation(correlationstat, figname)
-if __name__ == '__main__':
-    if len(sys.argv) != 4:
-        print("Usage: python Correlation.py <inputfile> <outputfile> <figname>")
-        sys.exit(1)
-    correlationstat = "correlationstat.csv"
-    infasta = sys.argv[1]
-    codonWout = sys.argv[2]
-    correlationStat(infasta, correlationstat, codonWout)
-    figname = sys.argv[3]
-    correlation(correlationstat,figname)

@@ -1,5 +1,3 @@
-import sys
-
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
@@ -159,11 +157,7 @@ def single_biasplot(input_4ATCG, figName):
 
 
 def bias(input_cds,figname):
-    # if len(sys.argv) != 3:
-    #     print("Usage: python3 bias.py <CDS.fasta> <figname>")
-    #     sys.exit(1)
-    # input_cds = sys.argv[1]
-    # figname = sys.argv[2]
+
     globStat = "globBiasStat.csv"
     singleStat = "singleBiasStat.csv"
     globBiasStat(input_cds, globStat)
@@ -180,6 +174,3 @@ def run(input_cds,figname,outputPath,figType="pdf"):
     singleBiasStat(input_cds, singleStat)
     glob_biasplot(globStat,figname+"_glob"+"."+figType)
     single_biasplot(singleStat, figname+"_single"+"."+figType)
-
-if __name__ == "__main__":
-    bias()
