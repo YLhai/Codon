@@ -37,20 +37,25 @@ seaborn==0.13.2
 
 ### bias
 
+
 ```bash
 
-python CUB.py bias <yourCDS.fasta> <figName>
+python CUB.py bias <CDS.fasta> <figName>
 
 ```
 
 ### coa
 
+This command can generate a COA-plot.
+
 ```bash
 
-python CUB.py coa <yourCDS.fasta> <figName>
+python CUB.py coa <CDS.fasta> <figName>
 
 ```
 ### enc
+
+This command can generate a ENC-plot.
 
 ```bash
 
@@ -62,33 +67,35 @@ python CUB.py enc <codonW.out> <figName>
 
 ```bash
 
-python CUB.py correlation <yourCDS.fasta> <codonW.out> <figName>
+python CUB.py correlation <CDS.fasta> <codonW.out> <figName>
 
 ```
 ### neutrality
 
 ```bash
 
-python CUB correneutrality <cds.fasta> <figName>
+python CUB.py neutrality <CDS.fasta> <figName>
 
 ```
 ### optimal
 
 ```bash
 
-python CUB.py optimal <cds.fasta> <codonW.out> <figName>
+python CUB.py optimal <CDS.fasta> <codonW.out> <figName>
 
 ```
 ### similar
 
 ```bash
 
-python CUB bias <cdsA.fasta> <cdsB.fasta>
+python CUB.py similar <cdsA.fasta> <cdsB.fasta>
 
 ```
 ### rscu
 
+This command can generate a stacked barplot  illustrating RSCU values of synonymous codons.
 ```bash
 
-python CUB.py rscu <cds.fasta> <figName>
+python CUB.py rscu <CDS.fasta> <figName>
+```
 
