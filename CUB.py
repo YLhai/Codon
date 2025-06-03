@@ -12,14 +12,14 @@ from codonUsageBias.Similar import similarcodon
 from codonUsageBias.RSCU import rscu
 
 Commands = {
-    "bias": "Codon usage bias analysis",
-    "coa": "COA analysis ",
-    "enc": "Enc analysis ",
-    "optimal": "optimalcodon analysis ",
-    "neutrality": "neutrality analysis ",
+    "bias": "PR2 bias analysis",
+    "coa": " correspondence analysis(COA)",
+    "enc": "ENC-GC3 plot analysis ",
+    "optimal": "optimal codons analysis ",
+    "neutrality": "neutrality plot analysis ",
     "correlation": "correlation analysis ",
-    "similar": "similar analysis of two species",
-    "rscu": "RSCU analysis ",
+    "similar": "similarity analysis of two species",
+    "rscu": "RSCU values of synonymous codons analysis ",
 
 }
 

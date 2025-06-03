@@ -1,5 +1,5 @@
 
-CodonUsageBias(CUB) is a plot and analysis tool of codon bias. You can use this 
+CodonUsageBias(CUB) is a plot and analysis tool of codon usage bias. You can use this 
 tool to analyse amino acid usage bias, COA, RSCU, ENc, correlation, neutrality and similar, 
 and to generate plots to illustrate them. However, just two files(`CDS.fasta` and `codonW.out`) will be prepared.
 # Install
@@ -62,7 +62,7 @@ python CUB.py bias <CDS.fasta> <figName> [figFormat]
 
 ### coa
 
-This command can generate a COA-plot.
+This command can generate a COA plot.
 
 ```bash
 
@@ -71,7 +71,7 @@ python CUB.py coa <CDS.fasta> <figName> [figFormat]
 ```
 ### enc
 
-This command can generate a ENC-plot.
+This command can generate a ENC-GC3 plot.
 
 ```bash
 
@@ -94,7 +94,7 @@ python CUB.py neutrality <CDS.fasta> <figName> [figFormat]
 
 ```
 ### optimal
-This command can make a optimalcodon analysis and plot the result.
+This command can make a optimal codons analysis and plot the result.
 
 ```bash
 
