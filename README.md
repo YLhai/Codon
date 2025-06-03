@@ -1,5 +1,5 @@
 
-CodonUsageBias(CUB) is a plot and analysis tool of codon bias. You can use this 
+CodonUsageBias(CUB) is a plot and analysis tool of codon usage bias. You can use this 
 tool to analyse amino acid usage bias, COA, RSCU, ENc, correlation, neutrality and similar, 
 and to generate plots to illustrate them. However, just two files(`CDS.fasta` and `codonW.out`) will be prepared.
 # Install
