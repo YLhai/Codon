@@ -11,19 +11,20 @@ from codonUsageBias.Optimalcodon import optimalcodon
 from codonUsageBias.Similar import similarcodon
 from codonUsageBias.RSCU import rscu
 
+Commands = {
+    "bias": "Codon usage bias analysis",
+    "coa": "COA analysis ",
+    "enc": "Enc analysis ",
+    "optimal": "optimalcodon analysis ",
+    "neutrality": "neutrality analysis ",
+    "correlation": "correlation analysis ",
+    "similar": "similar analysis of two species",
+    "rscu": "RSCU analysis ",
+
+}
+
 def help(type):
     if type == 1:
-        Commands = {
-            "bias": "***",
-            "coa": "***",
-            "enc": "***",
-            "optimal": "***",
-            "neutrality": "***",
-            "correlation": "***",
-            "similar": "***",
-            "rscu": "***",
-
-        }
         print("Usage: \t python CUB.py <command> <arguments>\n"
               "version: \t 1.1\n\n"
               "Description: CUB is a plot analysis tool of codon usage bias.\n\n"
@@ -32,23 +33,12 @@ def help(type):
         for key, value in Commands.items():
             print(key + "\t" + value)
         print(
-            "\nWriten by hai and peng in 2025."
+            "\nWriten by hai and peng in 2025.\n"
+            "Github: https://github.com/YLhai/Codon"
         )
 
 
 def main():
-
-    Commands = {
-        "bias":"***",
-        "coa":"***",
-        "enc":"***",
-        "optimal": "***",
-        "neutrality":"***",
-        "correlation": "***",
-        "similar": "***",
-        "rscu": "***",
-
-    }
 
     # 未输入命令
     if len(sys.argv) < 2:
@@ -66,37 +56,40 @@ def main():
         os.makedirs(outpath)
 
     elif modulename == "bias":
-        if len(sys.argv) != 4:
+        if len(sys.argv) < 4 or len(sys.argv) > 5:
             print("Usage: python CUB.py bias <cds.fasta> <figName>\n\n"
                   "cds.fasta\t the fasta file of codons.\n"
                   "figName\t the name of the output figure.\n"
                   )
             sys.exit(0)
         figPath = outpath + sys.argv[3]
-        bias.run(sys.argv[2], figPath, outpath)
+        figType = sys.argv[4] if len(sys.argv) == 5 else "pdf"
+        bias.run(sys.argv[2], figPath, outpath, figType)
 
     elif modulename == "coa":
-        if len(sys.argv) != 4:
+        if len(sys.argv) <4 or len(sys.argv) > 5:
             print("Usage: python CUB.py coa <cds.fasta> <figName>\n\n"
                   "cds.fasta\t the fasta file of codons.\n"
                   "figName\t the name of the output figure.\n"
                   )
             sys.exit(0)
         figPath = outpath + sys.argv[3]
-        COA.run(sys.argv[2], figPath, outpath)
+        figType = sys.argv[4] if len(sys.argv) == 5 else "pdf"
+        COA.run(sys.argv[2], figPath, outpath,figType)
 
     elif modulename == "enc":
-        if len(sys.argv) != 4:
+        if len(sys.argv) < 4 or len(sys.argv) > 5:
             print("Usage: python CUB.py enc <codonW.out> <figName>\n\n"
                   "codonW.out\t the outputfile of codonW using the codon.fasta.\n"
                   "figName\t the name of the output figure.\n"
                   )
             sys.exit(0)
         figPath = outpath + sys.argv[3]
-        ENc.run(sys.argv[2], figPath)
+        figType = sys.argv[4] if len(sys.argv) == 5 else "pdf"
+        ENc.run(sys.argv[2], figPath,figType)
 
     elif modulename == "correlation":
-        if len(sys.argv) != 5:
+        if len(sys.argv) <5 or len(sys.argv) > 6:
             print("Usage: python CUB.py correlation <cds.fasta> <codonW.out> <figName>\n\n"
                   "cds.fasta\t the fasta file of codons.\n"
                   "codonW.out\t the outputfile of codonW using the codon.fasta.\n"
@@ -104,20 +97,22 @@ def main():
                   )
             sys.exit(0)
         figPath = outpath + sys.argv[4]
-        correlation.run(sys.argv[2], sys.argv[3], figPath, outpath)
+        figType = sys.argv[5] if len(sys.argv) == 6 else "pdf"
+        correlation.run(sys.argv[2], sys.argv[3], figPath, outpath,figType)
 
     elif modulename == "neutrality":
-        if len(sys.argv) != 4:
+        if len(sys.argv) <4 or len(sys.argv) > 5:
             print("Usage: python CUB.py neutrality <cds.fasta> <figName>\n\n"
                   "cds.fasta\t the fasta file of codons.\n"
                   "figName\t the name of the output figure.\n"
                   )
             sys.exit(0)
         figPath = outpath + sys.argv[3]
-        neutrality.run(sys.argv[2], figPath, outpath)
+        figType = sys.argv[4] if len(sys.argv) == 5 else "pdf"
+        neutrality.run(sys.argv[2], figPath, outpath,figType)
 
     elif modulename == "optimal":
-        if len(sys.argv) != 5:
+        if len(sys.argv) <5 or len(sys.argv) > 6:
             print("Usage: python CUB.py optimal <cds.fasta> <codonW.out> <figName>\n\n"
                   "cds.fasta\t the fasta file of codons.\n"
                   "codonW.out\t the outputfile of codonW using the codon.fasta.\n"
@@ -125,7 +120,8 @@ def main():
                   )
             sys.exit(0)
         figPath = outpath + sys.argv[4]
-        optimalcodon.run(sys.argv[2], sys.argv[3], figPath, outpath)
+        figType = sys.argv[5] if len(sys.argv) == 5 else "pdf"
+        optimalcodon.run(sys.argv[2], sys.argv[3], figPath, outpath,figType)
 
     elif modulename == "similar":
         if len(sys.argv) != 4:
@@ -137,14 +133,15 @@ def main():
         similarcodon.run(sys.argv[2], sys.argv[3], outpath)
 
     elif modulename == "rscu":
-        if len(sys.argv) != 4:
+        if len(sys.argv) <4 or len(sys.argv) > 5:
             print("Usage: python CUB.py rscu <cds.fasta> <figName>\n\n"
                   "cds.fasta\t the fasta file of codons.\n"
                   "figName\t the name of the output figure.\n"
                   )
             sys.exit(0)
         figPath = outpath + sys.argv[3]
-        rscu.run(sys.argv[2], figPath, outpath)
+        figType = sys.argv[4] if len(sys.argv) == 5 else "pdf"
+        rscu.run(sys.argv[2], figPath, outpath,figType)
 
 
 if __name__ == "__main__":
