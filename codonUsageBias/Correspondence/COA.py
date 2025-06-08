@@ -63,7 +63,7 @@ def print_explained_variance(ca):
 
 def run(input_cds,figname,output_path,figType="pdf"):
 
-    output_csv = output_path + "cas.rscu.csv"
+    output_csv = output_path + "coa.rscu.csv"
     process_cds_file(input_cds, output_csv)
     input_csv = output_csv
     # 执行分析

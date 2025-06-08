@@ -65,6 +65,6 @@ def optimalstat(cds,codonWout,outstat):
     dfmin.index.name = 'Codon'
     dfall.index.name = 'Codon'
     merged_df = dfmin.join(dfmax).join(dfall)
-    merged_df['D-value'] = merged_df['max10RSCU'] - merged_df['min10RSCU']
+    merged_df['D-value'] = merged_df['min10RSCU'] - merged_df['max10RSCU']
     merged_df.to_csv(outstat, sep='\t')
     return merged_df

@@ -55,7 +55,7 @@ def main():
     if not os.path.exists(outpath):
         os.makedirs(outpath)
 
-    elif modulename == "bias":
+    if modulename == "bias":
         if len(sys.argv) < 4 or len(sys.argv) > 5:
             print("Usage: python CUB.py bias <cds.fasta> <figName>\n\n"
                   "cds.fasta\t the fasta file of codons.\n"
