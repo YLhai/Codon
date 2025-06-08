@@ -2,14 +2,7 @@
 
 import os
 import sys
-from codonUsageBias.Bias import bias
-from codonUsageBias.Correlation import correlation
-from codonUsageBias.Correspondence import COA
-from codonUsageBias.ENc import ENc
-from codonUsageBias.Neutrality import neutrality
-from codonUsageBias.Optimalcodon import optimalcodon
-from codonUsageBias.Similar import similarcodon
-from codonUsageBias.RSCU import rscu
+
 
 Commands = {
     "bias": "PR2 bias analysis",
@@ -62,6 +55,7 @@ def main():
                   "figName\t the name of the output figure.\n"
                   )
             sys.exit(0)
+        from codonUsageBias.Bias import bias
         figPath = outpath + sys.argv[3]
         figType = sys.argv[4] if len(sys.argv) == 5 else "pdf"
         bias.run(sys.argv[2], figPath, outpath, figType)
@@ -73,6 +67,7 @@ def main():
                   "figName\t the name of the output figure.\n"
                   )
             sys.exit(0)
+        from codonUsageBias.Correspondence import COA
         figPath = outpath + sys.argv[3]
         figType = sys.argv[4] if len(sys.argv) == 5 else "pdf"
         COA.run(sys.argv[2], figPath, outpath,figType)
@@ -84,6 +79,7 @@ def main():
                   "figName\t the name of the output figure.\n"
                   )
             sys.exit(0)
+        from codonUsageBias.ENc import ENc
         figPath = outpath + sys.argv[3]
         figType = sys.argv[4] if len(sys.argv) == 5 else "pdf"
         ENc.run(sys.argv[2], figPath,figType)
@@ -96,6 +92,7 @@ def main():
                   "figName\t the name of the output figure.\n"
                   )
             sys.exit(0)
+        from codonUsageBias.Correlation import correlation
         figPath = outpath + sys.argv[4]
         figType = sys.argv[5] if len(sys.argv) == 6 else "pdf"
         correlation.run(sys.argv[2], sys.argv[3], figPath, outpath,figType)
@@ -107,6 +104,7 @@ def main():
                   "figName\t the name of the output figure.\n"
                   )
             sys.exit(0)
+        from codonUsageBias.Neutrality import neutrality
         figPath = outpath + sys.argv[3]
         figType = sys.argv[4] if len(sys.argv) == 5 else "pdf"
         neutrality.run(sys.argv[2], figPath, outpath,figType)
@@ -119,6 +117,7 @@ def main():
                   "figName\t the name of the output figure.\n"
                   )
             sys.exit(0)
+        from codonUsageBias.Optimalcodon import optimalcodon
         figPath = outpath + sys.argv[4]
         figType = sys.argv[5] if len(sys.argv) == 5 else "pdf"
         optimalcodon.run(sys.argv[2], sys.argv[3], figPath, outpath,figType)
@@ -129,6 +128,8 @@ def main():
                   "cdsA.fasta\t the fasta file of codons of speciesA\n"
                   "cdsB.fasta\t the fasta file of codons of speciesB\n"
                   )
+            sys.exit(0)
+        from codonUsageBias.Similar import similarcodon
 
         similarcodon.run(sys.argv[2], sys.argv[3], outpath)
 
@@ -139,6 +140,9 @@ def main():
                   "figName\t the name of the output figure.\n"
                   )
             sys.exit(0)
+
+        from codonUsageBias.RSCU import rscu
+
         figPath = outpath + sys.argv[3]
         figType = sys.argv[4] if len(sys.argv) == 5 else "pdf"
         rscu.run(sys.argv[2], figPath, outpath,figType)
